@@ -14,7 +14,7 @@ fn main() {
     let encoded_query = utf8_percent_encode(query, NON_ALPHANUMERIC).to_string();
     let url = format!("https://www.google.com/search?q={}", encoded_query);
 
-    #[cfg(target_os = "macos")]
+    #[cfg(any(target_os = "macos", target_os = "linux"))]
     let _output = Command::new("open")
         .arg(url)
         .spawn()
